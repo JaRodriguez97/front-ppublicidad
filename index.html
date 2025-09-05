@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPublicidad</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Preload de videos -->
+    <link
+      rel="preload"
+      as="video"
+      href="./assets/background1.mp4"
+      type="video/mp4"
+    />
+    <link
+      rel="preload"
+      as="video"
+      href="./assets/background2.mp4"
+      type="video/mp4"
+    />
+  </head>
+
+  <body>
+    <section class="hero" id="inicio">
+      <video muted autoplay playsinline preload="auto" id="bg-video1">
+        <source src="./assets/background1.mp4" type="video/mp4" />
+      </video>
+
+      <video muted loop playsinline preload="auto" id="bg-video2">
+        <source src="./assets/background2.mp4" type="video/mp4" />
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-text">
+        <h1>PPublicidad</h1>
+        <a href="https://wa.me/573148526394" target="_blank" class="button">WhatsApp</button>
+        <a href="https://www.instagram.com/pepe.publicidad/" target="_blank" class="button">Instagram</button>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const video1 = document.getElementById("bg-video1");
+        const video2 = document.getElementById("bg-video2");
+
+        // Apenas cargue el primero, arranca y programamos el fade
+        video1.addEventListener("playing", () => {
+          setTimeout(() => video2.play(), 4300);
+
+          setTimeout(() => {
+            video1.style.transition = "opacity 1s ease"; // 1 segundo de desvanecimiento
+            video1.style.opacity = "0";
+          }, 4320); // 4.3 segundos
+        });
+      });
+    </script>
+  </body>
+</html>

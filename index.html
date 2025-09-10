@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PPublicidad</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="./index.js"></script>
 
     <!-- Preload de videos -->
+    <link
+      rel="preload"
+      as="image"
+      href="./assets/poster.webp"
+      type="image/webp"
+    />
     <link
       rel="preload"
       as="video"
@@ -15,46 +22,158 @@
     />
     <link
       rel="preload"
-      as="video"
-      href="./assets/background2.mp4"
+      as="fetch"
+      href="./assets/background1.mp4"
       type="video/mp4"
     />
   </head>
 
   <body>
     <section class="hero" id="inicio">
-      <video muted autoplay playsinline preload="auto" id="bg-video1">
+      <video
+        muted
+        autoplay
+        playsinline
+        preload="metadata"
+        id="bg-video1"
+        poster="assets/poster.webp"
+      >
         <source src="./assets/background1.mp4" type="video/mp4" />
       </video>
 
-      <video muted loop playsinline preload="auto" id="bg-video2">
-        <source src="./assets/background2.mp4" type="video/mp4" />
-      </video>
+      <video muted loop playsinline preload="metadata" id="bg-video2"></video>
 
       <div class="hero-overlay"></div>
 
+      <section
+        class="letreros"
+        style="
+          position: absolute;
+          top: 5vh;
+          right: 15vw;
+          display: flex;
+          width: 100vw;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 20px;
+          cursor: pointer;
+        "
+      >
+        <!-- <div class="letrero">DISEÑO</div>
+        <div class="letrero">IMPRESIÓN</div>
+        <div class="letrero">ROTULACIÓN</div>
+        <div class="letrero">VINILOS</div>
+        <div class="letrero">PLOTEADOS</div>
+        <div class="letrero">GRÁFICOS</div>
+        <div class="letrero">VEHICULOS</div>
+        <div class="letrero">CORPORATIVOS</div>
+        <div class="letrero">PUBLICIDAD</div>
+        <div class="letrero">EXTERIOR</div>
+        <div class="letrero">INTERIOR</div>
+        <div class="letrero">LONAS</div>
+        <div class="letrero">AFICHES</div>
+        <div class="letrero">STICKERS</div>
+        <div class="letrero">ETIQUETAS</div> -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+          style="height: 10vh"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+          />
+        </svg>
+        <h2 style="rotate: -20deg; translate: 0 -40px">LETREROS</h2>
+
+        <p hidden>descripción del producto y servicio ofrecido</p>
+      </section>
+
+      <section
+        class="interiores"
+        style="
+          position: absolute;
+          bottom: 50vh;
+          left: 0vw;
+          display: flex;
+          width: 100vw;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 20px;
+          cursor: pointer;
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+          style="height: 10vh; translate: 0 15px"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m16.49 12 3.75-3.751m0 0-3.75-3.75m3.75 3.75H3.74V19.5"
+          />
+        </svg>
+        <h2>DISEÑO DE INTERIORES</h2>
+        <p hidden>descripción del producto y servicio ofrecido</p>
+      </section>
+
+      <section
+        class="visivilidad"
+        style="
+          position: absolute;
+          bottom: 20vh;
+          right: 0vw;
+          display: flex;
+          width: 100vw;
+          justify-content: space-evenly;
+          align-items: center;
+          cursor: pointer;
+        "
+      >
+        <h2>ALCANCE VISUAL</h2>
+        <p hidden>descripción del producto y servicio ofrecido</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+          style="height: 10vh"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+          />
+        </svg>
+      </section>
+
       <div class="hero-text">
         <h1>PPublicidad</h1>
-        <a href="https://wa.me/573148526394" target="_blank" class="button">WhatsApp</button>
-        <a href="https://www.instagram.com/pepe.publicidad/" target="_blank" class="button">Instagram</button>
+
+        <div>
+          <a href="https://wa.me/573148526394" target="_blank" class="button"
+            >WhatsApp</a
+          >
+          <a
+            href="https://www.instagram.com/pepe.publicidad/"
+            target="_blank"
+            class="button"
+            >Instagram</a
+          >
+        </div>
       </div>
     </section>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const video1 = document.getElementById("bg-video1");
-        const video2 = document.getElementById("bg-video2");
-
-        // Apenas cargue el primero, arranca y programamos el fade
-        video1.addEventListener("playing", () => {
-          setTimeout(() => video2.play(), 4300);
-
-          setTimeout(() => {
-            video1.style.transition = "opacity 1s ease"; // 1 segundo de desvanecimiento
-            video1.style.opacity = "0";
-          }, 4320); // 4.3 segundos
-        });
-      });
-    </script>
   </body>
 </html>
